@@ -1,8 +1,8 @@
 /*Global css variables declarations*/
 :root{
     --width: 1920px;
-    --padding-left: 20vw;
-    --padding-right: 20vw;
+    --padding-left: 380px;
+    --padding-right: 380px;
     --transition-duration: 0.8s;
     --font-color-white: #fff;
     --color-tbc-blue: rgb(28, 180, 222);
@@ -268,8 +268,9 @@ a{
     color: var(--font-color-white);
 }
 
-.mission-description>div a{
-    margin-left: 20vw;
+.mission-description>div div{
+    padding-right: var(--padding-right);
+    padding-left: var(--padding-left);
 }
 
 /*Description of main content with current courses styles*/
@@ -301,8 +302,8 @@ a{
 }
 
 .list-of-courses ul li{
+    width: 350px;
     overflow: hidden;
-    width: 330px;
     margin: auto;
     border: #3a3939 solid 1px;
     border-radius: 8px;
@@ -571,6 +572,18 @@ footer .mail-link:hover{
     transition-duration: var(--transition-duration);
 }
 
+/*/*Media queries for screens less than 1500px wide*/
+
+@media only screen and (max-width: 1600px){
+    :root{
+        --padding-left: 12vw;
+        --padding-right: 12vw;
+    }
+
+    .list-of-courses ul li{
+        width: 380px;
+    }
+}
 
 /*Media queries for screens less than 1000px wide*/
 
@@ -582,10 +595,6 @@ footer .mail-link:hover{
     
     .sticked-navigation-menu ul li{
         margin-right: 35px;
-    }
-
-    .mission-description>div a{
-        margin-left: 6vw;
     }
 
     .list-of-courses ul li{
@@ -645,6 +654,10 @@ footer .mail-link:hover{
         height: 20px;
     }
 
+    .mission-description div a{
+        display: inline;
+    }
+
     .list-of-courses ul li {
         width: 80%;
     }
@@ -674,5 +687,53 @@ footer .mail-link:hover{
         cursor: pointer;
     }
 
+    footer .mail-link{
+        width: 130px;
+    }
+
+}
+
+
+@media only screen and (max-width:  500px){
+
+    .mobile-view-nav{
+        width: 45%;
+    }
+
+    .menu-close-button{
+        margin-left: 130px;
+    }
+
+    .header-background-image div h1, h2{
+        font-size: 3em;
+        text-align: center;
+    }
+
+    .header-background-image div h2{
+        font-size: 2.5em;
+
+    }
+
+    .list-of-courses ul li{
+        width: 100%;
+    }
+
+    .list-of-courses ul li:last-child{
+        width: 100%;
+    }
+
+    .parthers-logos-slider{
+        padding-bottom: 30px;
+    }
+
+    .parthers-logos-slider>div{
+        padding-right: 4vw;
+        padding-left: 4vw;
+        margin-bottom: 10px;
+    }
+
+    .slider img{
+        height: 40px;
+    }
 }
 
