@@ -18,13 +18,13 @@ closingButton.addEventListener("click", mobileViewMenuClose)
 
 function mobileViewMenuOpen(){
     mobileViewMenuBackground.style.display = "block"
-    setTimeout(()=>mobileViewMenuBackground.classList.remove("mobile-view-nav-background-hide"), navMenuBackgroundDelay)
+    setTimeout(()=>mobileViewMenuBackground.classList.remove("zero-opacity"), navMenuBackgroundDelay)
     mobileViewMenu.classList.remove("mobile-view-nav-hide")
 }
 
 function mobileViewMenuClose(){
     mobileViewMenu.classList.add("mobile-view-nav-hide")
-    mobileViewMenuBackground.classList.add("mobile-view-nav-background-hide")
+    mobileViewMenuBackground.classList.add("zero-opacity")
     setTimeout(()=>mobileViewMenuBackground.style.display = "none", navMenuBackgroundDelay)
 }
 
@@ -55,53 +55,64 @@ dropDownAnswers.forEach(el => {
 /*Slider with Parthers Logos animation*/
 
 const clickableDots = document.querySelectorAll(".dot")
-const sliderItems = document.querySelectorAll(".slider-content")
+const sliderItems = document.querySelectorAll(".slider-content-wrapper")
 const leftArrow = document.querySelector(".arrow-left")
 const rightArrow = document.querySelector(".arrow-right")
 const sliderAnimationDelay=5000;
-let currentSliderIndex = 0
 
-clickableDots.forEach((dot,index) =>{dot.addEventListener("click", ()=>{
-    hideSliderItems()
-    sliderItems[index].style.display="flex"
-    sliderItems[index].classList.remove("hidden")
-})});
 
-leftArrow.addEventListener("click", ()=>{
-    const activeSlide = [...sliderItems].find(item=>item.style.display=="flex")
-    hideSliderItems()
-    activeSlide==sliderItems[0]?sliderItems[sliderItems.length-1].style.display="flex":activeSlide.previousElementSibling.style.display="flex"
-})
+sliderItems[0].style.display="block"
 
-rightArrow.addEventListener("click", ()=>{
-    const activeSlide = [...sliderItems].find(item=>item.style.display=="flex")
-    hideSliderItems()
-    activeSlide==sliderItems[sliderItems.length-1]?sliderItems[0].style.display="flex":
-    activeSlide.nextElementSibling.style.display="flex"
-})
 
 /*Automated Slideshow code*/
 
-displaySlider()
+const slideShow = setInterval(()=>showNextSlideItem(), 3000)
 
-function hideSliderItems(){
-    sliderItems.forEach(item=>item.style.display="none")
+
+/*Sliders controls via left and right arrows */
+
+rightArrow.addEventListener("click", ()=>{showNextSlideItem(), clearInterval(slideShow)})
+leftArrow.addEventListener("click", ()=>{showPreviousSlideItem(), clearInterval(slideShow)})
+
+function showNextSlideItem(){
+    const activeSlideItem = [...sliderItems].find(item=>item.style.display=="block")
+    const nextSlideItem = activeSlideItem==sliderItems[sliderItems.length-1]?sliderItems[0]:activeSlideItem.nextElementSibling;
+
+    activeSlideItem.classList.add("zero-opacity")
+    setTimeout(()=>{activeSlideItem.style.display = "none", nextSlideItem.style.display="block"}, navMenuBackgroundDelay)
+    setTimeout(()=>nextSlideItem.classList.remove("zero-opacity"), navMenuBackgroundDelay*1.2)
 }
 
+function showPreviousSlideItem(){
+    const activeSlideItem = [...sliderItems].find(item=>item.style.display=="block")
+    const nextSlideItem = activeSlideItem==sliderItems[0]?sliderItems[sliderItems.length-1]:activeSlideItem.previousElementSibling;
 
-function displaySlider(){
+    activeSlideItem.classList.add("zero-opacity")
+    setTimeout(()=>{activeSlideItem.style.display = "none", nextSlideItem.style.display="block"}, navMenuBackgroundDelay)
+    setTimeout(()=>nextSlideItem.classList.remove("zero-opacity"), navMenuBackgroundDelay*1.2)
+
+}
+
+/*Sliders controls via dots */
+
+clickableDots.forEach(dot => dot.addEventListener("click", (e)=>switchSlideViaDots(e.target.id)))
+
+function switchSlideViaDots(dot){
     
-    let sliderItems = document.querySelectorAll(".slider-content")
-    hideSliderItems()
+    clearInterval(slideShow)
+    
+    const activeSlideItem = [...sliderItems].find(item=>item.style.display=="block")
+    let nextSlideItem;
+    
+    activeSlideItem == sliderItems[dot]?"": nextSlideItem = sliderItems[dot]
 
-    currentSliderIndex++;
-    if(currentSliderIndex>sliderItems.length){currentSliderIndex=1}
-    sliderItems[currentSliderIndex-1].style.display = "flex"
-    setTimeout(displaySlider, sliderAnimationDelay)
+    if(nextSlideItem&&activeSlideItem){
+
+    activeSlideItem.classList.add("zero-opacity")
+    setTimeout(()=>{activeSlideItem.style.display = "none", nextSlideItem.style.display="block"}, navMenuBackgroundDelay)
+    setTimeout(()=>nextSlideItem.classList.remove("zero-opacity"), navMenuBackgroundDelay*1.2)
+    }
 }
-
-
-
 
 
 

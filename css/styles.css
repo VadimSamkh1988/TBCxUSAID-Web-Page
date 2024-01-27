@@ -1,9 +1,10 @@
 /*Global css variables declarations*/
 :root{
     --width: 1920px;
-    --padding-left: 380px;
-    --padding-right: 380px;
+    --padding-left: 370px;
+    --padding-right: 370px;
     --transition-duration: 0.8s;
+    --opacity-transition-duration: 0.5s;
     --font-color-white: #fff;
     --color-tbc-blue: rgb(28, 180, 222);
     --background-color-dark-grey: #1e1d1d;
@@ -128,14 +129,14 @@ a{
     bottom:0;
     left: 0;
     transition: opacity;
-    transition-duration: 0.5s;
+    transition-duration: var(--opacity-transition-duration);
     transition-timing-function: linear;
 }
 
-.mobile-view-nav-background-hide{
+.zero-opacity{
     opacity: 0;
     transition: opacity;
-    transition-duration: 0.5s;
+    transition-duration: var(--opacity-transition-duration);
     transition-timing-function: linear;
 }
 
@@ -227,8 +228,8 @@ a{
     max-width: var(--width);
     padding-left: var(--padding-left);
     padding-right: var(--padding-right);
-    padding-top: 180px;
-    padding-bottom: 120px;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .header-background-image h1, h2{
@@ -237,6 +238,7 @@ a{
     text-transform: uppercase;
     color: var(--font-color-white);
     line-height: 1.4;
+    margin-top: 10px;
 }
 
 .header-background-image h1 span{
@@ -263,9 +265,14 @@ a{
     margin-bottom: 40px;
     padding-right: var(--padding-right);
     padding-left: var(--padding-left);
-    font-size: 30px;
+    font-size: 28px;
     line-height: 1.7;
     color: var(--font-color-white);
+}
+
+.mission-description p span{
+    text-transform: uppercase;
+    font-size: 32px;
 }
 
 .mission-description>div div{
@@ -302,7 +309,7 @@ a{
 }
 
 .list-of-courses ul li{
-    width: 350px;
+    width: 330px;
     overflow: hidden;
     margin: auto;
     border: #3a3939 solid 1px;
@@ -397,6 +404,14 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.slider-content-wrapper{
+    display: none;
+    width: 100%;
+    transition: opacity;
+    transition-duration: var(--opacity-transition-duration);
+    transition-timing-function: linear;
 }
 
 .slider-content{
@@ -705,12 +720,12 @@ footer .mail-link:hover{
     }
 
     .header-background-image div h1, h2{
-        font-size: 3em;
+        font-size: 4em;
         text-align: center;
     }
 
     .header-background-image div h2{
-        font-size: 2.5em;
+        font-size: 3em;
 
     }
 
@@ -734,6 +749,10 @@ footer .mail-link:hover{
 
     .slider img{
         height: 40px;
+    }
+
+    .arrow{
+        opacity: 0;
     }
 }
 
