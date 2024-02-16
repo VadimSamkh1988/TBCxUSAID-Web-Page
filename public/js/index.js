@@ -34,34 +34,25 @@ const dropDownAnswers = document.querySelectorAll(".open-close-on-click")
 const answers = document.querySelectorAll(".dropdown-answers-list-answer")
 const allArrowDown = document.querySelectorAll(".arrowDown")
 
-function hideAnswer(elem){
-    elem.classList.add("hidden")
+answers.forEach(elem=>closeElement(elem))
+dropDownAnswers.forEach(elem=>elem.addEventListener('click', ()=>toggleElement(elem.parentElement.nextElementSibling)))
+
+function closeElement(elem){
+    elem.style.height="1px"
+    elem.previousElementSibling.lastElementChild.classList.remove("open")
 }
 
-function showAnswer(elem){
-    elem.classList.toggle("hidden")
-    elem.parentElement.querySelector(".arrowDown").classList.add("open")
+function openElement(elem){
+
+    answers.forEach(elem=>closeElement(elem))
+    const contentHeight = elem.childNodes[1].offsetHeight
+    elem.style.height = `${contentHeight}px`
+    elem.previousElementSibling.lastElementChild.classList.add("open")
 }
 
-function makeAllArrowsDown(){
-
-    allArrowDown.forEach(arrow=>{
-        arrow.classList.remove("open")
-    })
+function toggleElement(elem){
+    elem.style.height==="1px"?openElement(elem):closeElement(elem)
 }
-
-function changeStateOfAnswer(e){
-    makeAllArrowsDown()
-    const currentAnswer = e.target.parentElement.nextElementSibling
-    answers.forEach(answer=>{answer!==currentAnswer?hideAnswer(answer):""})
-    showAnswer(currentAnswer)
-    document.querySelector(".open").parentElement.nextElementSibling.classList.contains("hidden")?document.querySelector(".open").classList.remove("open"):''
-}
-
-dropDownAnswers.forEach(el => {
-        el.addEventListener("click", e=>changeStateOfAnswer(e))
-    }
-)
 
 /*Slider with Parthers Logos animation*/
 

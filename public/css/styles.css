@@ -1,12 +1,11 @@
 /*Global css variables declarations*/
 :root{
     --width: 1920px;
-    --padding-left: 370px;
-    --padding-right: 370px;
+    --padding-left: 450px;
+    --padding-right: 450px;
     --transition-duration: 0.8s;
     --opacity-transition-duration: 0.5s;
     --font-color-white: #fff;
-    /* --color-tbc-blue: rgb(28, 180, 222); */
     --color-tbc-blue: #00aeef;
     --background-color-dark-grey: #1e1d1d;
 }
@@ -234,7 +233,8 @@ a{
 }
 
 .header-background-image h1, h2{
-    font-size: 50px;
+    font-family: "BPG Mrgvlovani Caps 2010";
+    font-size: 40px;
     font-weight: 1000;
     text-transform: uppercase;
     color: var(--font-color-white);
@@ -252,7 +252,7 @@ a{
     margin: 0;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #2c2a2a;
+    background-color: rgb(43,43,43)
 }
 
 .mission-description>div{
@@ -285,7 +285,7 @@ a{
 
 .list-of-courses{
     padding-top: 40px;
-    background-color: #101010;
+    background-color: rgb(22,22,22)
 }
 
 .list-of-courses>div{
@@ -310,9 +310,8 @@ a{
 }
 
 .list-of-courses ul li{
-    width: 330px;
+    width: 310px;
     overflow: hidden;
-    margin: auto;
     border: #3a3939 solid 1px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -366,7 +365,7 @@ a{
 /*Slider with parthers logos styles*/
 
 .parthers-logos-slider{
-    background-color: #2c2a2a;
+    background-color: rgb(43,43,43);
     padding-top: 40px;
     padding-bottom: 50px;
 }
@@ -485,13 +484,12 @@ a{
 .dropdown-answers-list li{
     font-size: 16px;
     color: var(--font-color-white);
-    padding-top: 25px;
-    padding-bottom: 25px;
     border-bottom: 1px solid #2c2a2a;
-
 }
 
 .open-close-on-click{
+    padding-top: 25px;
+    padding-bottom: 25px;
     cursor: pointer;
 }
 
@@ -517,22 +515,18 @@ a{
 }
 
 .dropdown-answers-list-answer{
-    height: fit-content;
     cursor:default;
     overflow: hidden;
+    transition: height;
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    margin-bottom: 10px;
 }
 
 .dropdown-answers-list-answer span{
     display: block;
-    padding-left: 20px;
-    margin-bottom: 20px;
+    /* padding-left: 20px; */
     line-height: 2;
-}
-
-.dropdown-answers-list-answer span:first-child{
-    padding: 0;
-    margin-top: 40px;
-    margin-bottom: 40px;    
 }
 
 .mobile-view-link{
@@ -543,7 +537,7 @@ a{
 /*Contact information styles*/
 
 footer{
-    background-color: #101613;
+    background-color: rgb(26,30,31)
 }
 
 footer .container{
@@ -701,6 +695,8 @@ footer .mail-link:hover{
 
     .list-of-courses ul li {
         width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
     }
 
     .list-of-courses ul li:last-child {
